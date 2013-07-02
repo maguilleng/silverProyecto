@@ -4,38 +4,38 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AlmacenDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="AlmacenDBModelStoreContainer">
-          <EntitySet Name="Users" EntityType="AlmacenDBModel.Store.Users" store:Type="Tables" Schema="dbo" />
+      <Schema Namespace="dbAlmacenModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="dbAlmacenModelStoreContainer">
+          <EntitySet Name="Users" EntityType="dbAlmacenModel.Store.Users" store:Type="Tables" Schema="dbo" />
         </EntityContainer>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="userId" />
           </Key>
           <Property Name="userId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="usuario" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="contrasena" Type="varchar" Nullable="false" MaxLength="25" />
-          <Property Name="nombre" Type="varchar" MaxLength="50" />
-          <Property Name="creationDate" Type="datetime" />
+          <Property Name="usuario" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="contrasena" Type="nvarchar" Nullable="false" MaxLength="25" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="60" />
+          <Property Name="creationDate" Type="int" />
           <Property Name="status" Type="int" />
         </EntityType>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="AlmacenDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="AlmacenDBEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="Users" EntityType="AlmacenDBModel.User" />
+      <Schema Namespace="dbAlmacenModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="dbAlmacenEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="dbAlmacenModel.User" />
         </EntityContainer>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="userId" />
           </Key>
           <Property Name="userId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="usuario" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="contrasena" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
-          <Property Name="nombre" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="creationDate" Type="DateTime" Precision="3" />
+          <Property Name="usuario" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="contrasena" Type="String" Nullable="false" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="nombre" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+          <Property Name="creationDate" Type="Int32" />
           <Property Name="status" Type="Int32" />
         </EntityType>
       </Schema>
@@ -43,9 +43,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AlmacenDBModelStoreContainer" CdmEntityContainer="AlmacenDBEntities">
+        <EntityContainerMapping StorageEntityContainer="dbAlmacenModelStoreContainer" CdmEntityContainer="dbAlmacenEntities">
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="AlmacenDBModel.User">
+            <EntityTypeMapping TypeName="dbAlmacenModel.User">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="userId" ColumnName="userId" />
                 <ScalarProperty Name="usuario" ColumnName="usuario" />
