@@ -18,7 +18,7 @@ namespace AlmacenSL.Web
         public string usuario { get; set; }
         public string contrasena { get; set; }
         public string nombre { get; set; }
-        public Nullable<System.DateTime> creationDate { get; set; }
+        public Nullable<int> creationDate { get; set; }
         public Nullable<int> status { get; set; }
     }
 }

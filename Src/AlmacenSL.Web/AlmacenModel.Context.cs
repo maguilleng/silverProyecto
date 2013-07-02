@@ -13,10 +13,10 @@ namespace AlmacenSL.Web
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AlmacenDBEntities : DbContext
+    public partial class dbAlmacenEntities : DbContext
     {
-        public AlmacenDBEntities()
-            : base("name=AlmacenDBEntities")
+        public dbAlmacenEntities()
+            : base("name=dbAlmacenEntities")
         {
         }
     

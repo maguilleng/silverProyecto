@@ -7,6 +7,16 @@
     d:DesignHeight="300" d:DesignWidth="400">
     
     <Grid x:Name="LayoutRoot" Background="White">
-        <TextBlock Text="InventarioModule Cargado. SOLUCIÓN WWXXRAINBOW" FontSize="30"/>
+        <TextBlock Text="InventarioModule Cargado." FontSize="30"/>
+        <ItemsControl ItemsSource="{Binding Users}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="20">
+                        <TextBlock Text="{Binding usuario}" FontSize="20" Margin="5"/>
+                        <TextBlock Text="{Binding contrasena}" FontSize="20" Margin="5"/>
+                    </StackPanel>                   
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </UserControl>

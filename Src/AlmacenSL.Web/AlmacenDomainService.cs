@@ -13,13 +13,13 @@ namespace AlmacenSL.Web
     using System.ServiceModel.DomainServices.Server;
 
 
-    // Implementa la lógica de la aplicación mediante el contexto AlmacenDBEntities.
+    // Implementa la lógica de la aplicación mediante el contexto dbAlmacenEntities.
     // TODO: agregue la lógica de su aplicación a estos métodos o en métodos adicionales.
     // TODO: aplique la autenticación (Windows/ASP.NET Forms) y quite las marcas de comentario de lo siguiente para deshabilitar el acceso anónimo
     // Considere además la posibilidad de agregar roles para restringir el acceso según necesidad.
     // [RequiresAuthentication]
     [EnableClientAccess()]
-    public class AlmacenDomainService : DbDomainService<AlmacenDBEntities>
+    public class AlmacenDomainService : DbDomainService<dbAlmacenEntities>
     {
 
         // TODO:

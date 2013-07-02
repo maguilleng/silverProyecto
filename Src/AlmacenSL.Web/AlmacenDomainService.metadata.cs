@@ -35,7 +35,7 @@ namespace AlmacenSL.Web
 
             public string contrasena { get; set; }
 
-            public Nullable<DateTime> creationDate { get; set; }
+            public Nullable<int> creationDate { get; set; }
 
             public string nombre { get; set; }
 

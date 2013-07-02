@@ -15,8 +15,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Src\Entidades\Entidades.csproj", "{023D0EE5-106D-4989-A550-0B63D18B4820}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlmacenSL.Modules.Inventario", "Src\AlmacenSL.Modules.Inventario\AlmacenSL.Modules.Inventario.csproj", "{1426C03D-2967-4A4F-A33A-DA36C9ACB3C4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5FD178AA-E77B-4F4F-AA8A-1EEBFF7ACAAE} = {5FD178AA-E77B-4F4F-AA8A-1EEBFF7ACAAE}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlmacenSL.Infrastructure", "Src\AlmacenSL.Infrastructure\AlmacenSL.Infrastructure.csproj", "{B8FF4146-1FDC-4F62-AFEA-8EFEE5711795}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5FD178AA-E77B-4F4F-AA8A-1EEBFF7ACAAE} = {5FD178AA-E77B-4F4F-AA8A-1EEBFF7ACAAE}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
