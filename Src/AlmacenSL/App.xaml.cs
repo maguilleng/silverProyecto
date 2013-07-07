@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.ServiceModel.DomainServices.Client.ApplicationServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -22,10 +23,15 @@ namespace AlmacenSL
             this.UnhandledException += this.Application_UnhandledException;
 
             InitializeComponent();
+
+            WebContext webcontext = new WebContext();
+            webcontext.Authentication = new FormsAuthentication();
+            this.ApplicationLifetimeObjects.Add(webcontext);
         }
 
         private void Application_Startup(object sender, StartupEventArgs e) 
         {
+            this.Resources.Add("WebContext", WebContext.Current);
             Bootstrapper bootstrapper = new Bootstrapper();
             bootstrapper.Run(true);
         }
