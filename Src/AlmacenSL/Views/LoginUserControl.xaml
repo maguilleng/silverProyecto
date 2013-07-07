@@ -38,8 +38,8 @@
                        Margin="5"/>
                 <TextBlock Text="Contraseña" FontSize="15" FontWeight="Bold" Foreground="{StaticResource LightBlueColorBrush}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top"
                        Margin="5"/>
-                <TextBox FontSize="15" Width="200" Grid.Column="2"  Margin="5,20,5,5" VerticalAlignment="Bottom"/>
-                <PasswordBox FontSize="15" Width="200" Grid.Row="1" Grid.Column="2" Margin="5" VerticalAlignment="Top"/>
+                <TextBox Text="{Binding StrUser, Mode=TwoWay}" FontSize="15" Width="200" Grid.Column="2"  Margin="5,20,5,5" VerticalAlignment="Bottom"/>
+                <PasswordBox Password="{Binding StrPassword, Mode=TwoWay}" FontSize="15" Width="200" Grid.Row="1" Grid.Column="2" Margin="5" VerticalAlignment="Top"/>
                 
                 <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Right">
                     <telerik:RadButton Content="Aceptar" Command="{Binding LoadModuleCommand}" 

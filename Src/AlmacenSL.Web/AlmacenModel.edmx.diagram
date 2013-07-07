@@ -4,8 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="246e0cdd52134252b1d789cefc7f3272" Name="Diagrama1">
-        <EntityTypeShape EntityType="dbAlmacenModel.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="98b61991b9144a1f93e888539333c93a" Name="Diagrama1">
+        <EntityTypeShape EntityType="dbAlmacenModel.Empleado" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbAlmacenModel.Applications" Width="1.5" PointX="4.2928111796699522" PointY="22.3876841023507" />
+        <EntityTypeShape EntityType="dbAlmacenModel.Memberships" Width="1.5" PointX="8.7235287673415272" PointY="20.259354988233817" />
+        <EntityTypeShape EntityType="dbAlmacenModel.Profiles" Width="1.5" PointX="11.148907782113604" PointY="1.0622381721913061" />
+        <EntityTypeShape EntityType="dbAlmacenModel.Roles" Width="1.5" PointX="7.7442228904665553" PointY="6.3964577794058517" />
+        <EntityTypeShape EntityType="dbAlmacenModel.UserInfo" Width="1.5" PointX="5.133052023655293" PointY="24.192998018205632" />
+        <EntityTypeShape EntityType="dbAlmacenModel.Users" Width="1.5" PointX="7.117736888638575" PointY="9.9278177665210414" />
+        <AssociationConnector Association="dbAlmacenModel.MembershipApplication" />
+        <AssociationConnector Association="dbAlmacenModel.RoleApplication" />
+        <AssociationConnector Association="dbAlmacenModel.UserApplication" />
+        <AssociationConnector Association="dbAlmacenModel.MembershipUser" />
+        <AssociationConnector Association="dbAlmacenModel.UserProfile" />
+        <AssociationConnector Association="dbAlmacenModel.FK_UserInfo_Users" />
+        <AssociationConnector Association="dbAlmacenModel.UsersInRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

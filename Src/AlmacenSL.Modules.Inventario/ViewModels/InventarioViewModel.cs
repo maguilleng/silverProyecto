@@ -21,8 +21,8 @@ namespace AlmacenSL.Modules.Inventario
 
         public AlmacenDomainContext context { get; set; }
 
-        ObservableCollection<User> users;
-        public ObservableCollection<User> Users
+        ObservableCollection<Empleado> users;
+        public ObservableCollection<Empleado> Users
         {
             get { return users; }
             set
@@ -40,9 +40,9 @@ namespace AlmacenSL.Modules.Inventario
 
         public void getUsers()
         {
-            context.Load(context.GetUsersQuery(), (result) => 
+            context.Load(context.GetEmpleadosQuery(), (result) =>
                                                     {
-                                                        Users = new ObservableCollection<User>(result.Entities);
+                                                        Users = new ObservableCollection<Empleado>(result.Entities);
                                                     }, null);
         }
     }

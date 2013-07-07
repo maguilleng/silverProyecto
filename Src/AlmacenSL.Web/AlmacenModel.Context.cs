@@ -25,6 +25,12 @@ namespace AlmacenSL.Web
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<User> Users { get; set; }
+        public DbSet<Empleado> Empleados { get; set; }
+        public DbSet<Applications> Applications { get; set; }
+        public DbSet<Memberships> Memberships { get; set; }
+        public DbSet<Profiles> Profiles { get; set; }
+        public DbSet<Roles> Roles { get; set; }
+        public DbSet<UserInfo> UserInfo { get; set; }
+        public DbSet<Users> Users { get; set; }
     }
 }

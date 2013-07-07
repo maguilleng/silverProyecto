@@ -12,8 +12,8 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Margin="20">
-                        <TextBlock Text="{Binding usuario}" FontSize="20" Margin="5"/>
-                        <TextBlock Text="{Binding contrasena}" FontSize="20" Margin="5"/>
+                        <TextBlock Text="{Binding Nombre}" FontSize="20" Margin="5"/>
+                        <TextBlock Text="{Binding ApPaterno}" FontSize="20" Margin="5"/>
                     </StackPanel>                   
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
