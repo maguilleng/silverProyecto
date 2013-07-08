@@ -47,7 +47,7 @@
                 <PasswordBox Password="{Binding StrPassword, Mode=TwoWay}" FontSize="15" Width="200" Grid.Row="1" Grid.Column="2" Margin="5" VerticalAlignment="Top"/>
                 
                 <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Right">
-                    <telerik:RadButton Content="Aceptar" Command="{Binding LoginUserCommand}" 
+                    <telerik:RadButton Content="Aceptar" Command="{Binding LoginUserCommand}" IsEnabled="{Binding EnableLoginButton}"
                                        Foreground="{StaticResource LightBlueColorBrush}"  telerik:StyleManager.Theme="{StaticResource Theme}" 
                                   Width="60" Margin="5,5,5,20"/>
 

@@ -13,6 +13,7 @@ using AlmacenSL.Web;
 using System.Linq;
 using Microsoft.Practices.Prism.Regions;
 using AlmacenSL.Infrastructure;
+using System.ComponentModel.DataAnnotations;
 
 namespace AlmacenSL.ViewModels
 {
@@ -34,9 +35,11 @@ namespace AlmacenSL.ViewModels
         {
             this.LoginUserCommand = new DelegateCommand<object>(this.OnLoginUser);
             this.CloseSessionCommand = new DelegateCommand<object>(this.OnCloseSession);
+            this.EnableLoginButton = true;
         }
 
         string strUser;
+        [Required]
         public string StrUser
         {
             get { return strUser; }
@@ -48,13 +51,25 @@ namespace AlmacenSL.ViewModels
         }
 
         string strPassword;
+        [Required]
         public string StrPassword
         {
             get { return strPassword; }
-            set 
+            set
             {
                 strPassword = value;
                 RaisePropertyChanged("StrPassword");
+            }
+        }
+
+        bool enableLoginButton;
+        public bool EnableLoginButton
+        {
+            get { return enableLoginButton; }
+            set 
+            {
+                enableLoginButton = value;
+                RaisePropertyChanged("EnableLoginButton");
             }
         }
 
@@ -72,11 +87,13 @@ namespace AlmacenSL.ViewModels
 
         private void OnLoginUser(object obj)
         {
+            this.EnableLoginButton = false;
             LoginParameters lp = new LoginParameters(StrUser, StrPassword);
             WebContext.Current.Authentication.Login(lp, LoginOperationCompleted, null);
         }
         private void LoginOperationCompleted(LoginOperation lo)
         {
+            this.EnableLoginButton = true;
             if (!lo.HasError)
             {
                 if (lo.LoginSuccess)
