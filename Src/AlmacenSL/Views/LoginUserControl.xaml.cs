@@ -4,14 +4,12 @@ using System.Linq;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
+using AlmacenSL.Infrastructure;
 
 namespace AlmacenSL.Views
 {
+    [ViewExport(RegionName = "MainContentRegion")]
     public partial class LoginUserControl : UserControl
     {
         public LoginUserControl()

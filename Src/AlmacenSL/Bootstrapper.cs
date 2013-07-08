@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using Microsoft.Practices.Prism.MefExtensions;
 using System.ComponentModel.Composition.Hosting;
 using Microsoft.Practices.Prism.Modularity;
+using AlmacenSL.Infrastructure;
 
 
 namespace AlmacenSL
@@ -37,14 +38,14 @@ namespace AlmacenSL
         {
             base.ConfigureAggregateCatalog();
             this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(Bootstrapper).Assembly));
-            //this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(AutoPopulateExportedViewsBehavior).Assembly));
+            this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(AutoPopulateExportedViewsBehavior).Assembly));
         }
 
 
         protected override Microsoft.Practices.Prism.Regions.IRegionBehaviorFactory ConfigureDefaultRegionBehaviors()
         {
             var factory = base.ConfigureDefaultRegionBehaviors();
-            //factory.AddIfMissing(typeof(AutoPopulateExportedViewsBehavior).Name, typeof(AutoPopulateExportedViewsBehavior));
+            factory.AddIfMissing(typeof(AutoPopulateExportedViewsBehavior).Name, typeof(AutoPopulateExportedViewsBehavior));
             return factory;
         }
 

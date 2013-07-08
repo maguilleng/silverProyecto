@@ -11,21 +11,29 @@ using Microsoft.Practices.Prism.ViewModel;
 using System.ServiceModel.DomainServices.Client.ApplicationServices;
 using AlmacenSL.Web;
 using System.Linq;
+using Microsoft.Practices.Prism.Regions;
+using AlmacenSL.Infrastructure;
 
 namespace AlmacenSL.ViewModels
 {
     [Export("ShellViewModel")]
     public class ShellViewModel : NotificationObject
     {
+        #region Propiedades y Atributos
         [Import(AllowRecomposition = false)]
         public IModuleManager ModuleManager;
 
-        public ICommand LoadModuleCommand { get; private set; }
+        [Import]
+        public IRegionManager RegionManager { get; set; }
+
+        public ICommand LoginUserCommand { get; private set; }
+        public ICommand CloseSessionCommand { get; set; }
 
         [ImportingConstructor]
         public ShellViewModel(IEventAggregator eventAggregator)
         {
-            this.LoadModuleCommand = new DelegateCommand<object>(this.OnLoadModule);
+            this.LoginUserCommand = new DelegateCommand<object>(this.OnLoginUser);
+            this.CloseSessionCommand = new DelegateCommand<object>(this.OnCloseSession);
         }
 
         string strUser;
@@ -50,40 +58,75 @@ namespace AlmacenSL.ViewModels
             }
         }
 
+        UserAuth currentUser;
+        public UserAuth CurrentUser
+        {
+            get { return currentUser; }
+            set 
+            { 
+                currentUser = value;
+                RaisePropertyChanged("CurrentUser");
+            }
+        }
+        #endregion
 
-        private void OnLoadModule(object obj)
+        private void OnLoginUser(object obj)
         {
             LoginParameters lp = new LoginParameters(StrUser, StrPassword);
-            WebContext.Current.Authentication.Login(lp, LoginOperationCompleted, null);  
+            WebContext.Current.Authentication.Login(lp, LoginOperationCompleted, null);
         }
-
-        
-
         private void LoginOperationCompleted(LoginOperation lo)
         {
             if (!lo.HasError)
             {
-                if(lo.LoginSuccess)
+                if (lo.LoginSuccess)
                 {
-                    if(WebContext.Current.User.IsAuthenticated)
+                    if (WebContext.Current.User.IsAuthenticated)
                     {
-                        UserAuth LoguedUser = WebContext.Current.User;
-                        UserAuth usuario= (UserAuth)LoguedUser;
-                        MessageBox.Show(LoguedUser.Roles.First());
+                        StrUser = String.Empty;
+                        StrPassword = String.Empty;
+                        CurrentUser = WebContext.Current.User;
+                        //MessageBox.Show(CurrentUser.Roles.First());
                     }
+                    this.RegionManager.RequestNavigate("HeaderRegion", "HeaderUserControl");
                     this.ModuleManager.LoadModule("InventarioModule");
+                    this.ModuleManager.LoadModuleCompleted += ModuleManager_LoadModuleCompleted;
+                    this.RegionManager.RequestNavigate("MainContentRegion", "InventarioMainUserControl");
+                    this.RegionManager.RequestNavigate("MainMenuRegion", "MainMenuUserControl");
                 }
                 else
-                if (!lo.LoginSuccess)
-                {
-                    MessageBox.Show("Usuario o Contraseña Incorrectos.");
-                }
+                    if (!lo.LoginSuccess)
+                    {
+                        MessageBox.Show("Usuario o Contraseña Incorrectos.");
+                    }
             }
             else
             {
                 MessageBox.Show("Error de Autenticación.");
             }
         }
+
+        private void OnCloseSession(object obj)
+        {
+            WebContext.Current.Authentication.Logout(LogoutOperationCompleted, null);
+        }
+        private void LogoutOperationCompleted(LogoutOperation lo)
+        {
+            if(!lo.HasError)
+            {
+                CurrentUser = null;
+                var region = this.RegionManager.Regions["MainContentRegion"];
+                //region.ClearActiveViews();
+                RegionManager.RequestNavigate("MainContentRegion", "LoginUserControl");
+
+                var headerRegion = this.RegionManager.Regions["HeaderRegion"];
+                headerRegion.ClearActiveViews();
+
+                var menuRegion = this.RegionManager.Regions["MainMenuRegion"];
+                menuRegion.ClearActiveViews();
+            }
+        }
+        
 
         public void OnImportsSatisfied()
         {
@@ -95,7 +138,7 @@ namespace AlmacenSL.ViewModels
         {
             try
             {
-
+                this.RegionManager.RequestNavigate("MainContentRegion", "InventarioMainUserControl");
             }
             catch (Exception ex)
             {

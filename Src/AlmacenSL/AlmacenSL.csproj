@@ -104,6 +104,10 @@
       <HintPath>..\..\..\..\..\..\..\..\Program Files\Telerik\RadControls for Silverlight Q2 2013\Binaries\Silverlight\Telerik.Windows.Controls.Input.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation, Version=2013.2.611.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Telerik\RadControls for Silverlight Q2 2013\Binaries\Silverlight\Telerik.Windows.Controls.Navigation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Telerik.Windows.Data, Version=2013.2.611.1050, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\..\..\..\Program Files\Telerik\RadControls for Silverlight Q2 2013\Binaries\Silverlight\Telerik.Windows.Data.dll</HintPath>
       <Private>True</Private>
@@ -123,8 +127,14 @@
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="Views\HeaderUserControl.xaml.cs">
+      <DependentUpon>HeaderUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginUserControl.xaml.cs">
       <DependentUpon>LoginUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainMenuUserControl.xaml.cs">
+      <DependentUpon>MainMenuUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserInfoUserControl.xaml.cs">
       <DependentUpon>UserInfoUserControl.xaml</DependentUpon>
@@ -143,7 +153,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\HeaderUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LoginUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainMenuUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

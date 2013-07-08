@@ -13,10 +13,10 @@ using AlmacenSL.Infrastructure;
 
 namespace AlmacenSL.Views
 {
-    [ViewExport(RegionName = "UserRegion")]
-    public partial class UserInfoUserControl : UserControl
+    [ViewExport(RegionName = "HeaderRegion", IsActiveByDefault = false)]
+    public partial class HeaderUserControl : UserControl
     {
-        public UserInfoUserControl()
+        public HeaderUserControl()
         {
             InitializeComponent();
         }

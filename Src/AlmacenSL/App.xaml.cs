@@ -30,10 +30,12 @@ namespace AlmacenSL
         }
 
         private void Application_Startup(object sender, StartupEventArgs e) 
-        {
-            this.Resources.Add("WebContext", WebContext.Current);
+        {            
             Bootstrapper bootstrapper = new Bootstrapper();
             bootstrapper.Run(true);
+
+            ((WebAuthenticationService)WebContext.Current.Authentication).DomainContext = new AlmacenSL.Web.AuthenticationDomainContext();
+            this.Resources.Add("WebContext", WebContext.Current);
         }
 
         private void Application_Exit(object sender, EventArgs e) 

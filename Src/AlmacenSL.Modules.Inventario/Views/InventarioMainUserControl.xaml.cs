@@ -11,10 +11,11 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.ComponentModel.Composition;
 using Microsoft.Practices.Prism.Regions;
+using AlmacenSL.Infrastructure;
 
 namespace AlmacenSL.Modules.Inventario.Views
 {
-    [Export]
+    [ViewExport(RegionName = "MainContentRegion", IsActiveByDefault=true)]
     public partial class InventarioMainUserControl : UserControl
     {
         [Import]

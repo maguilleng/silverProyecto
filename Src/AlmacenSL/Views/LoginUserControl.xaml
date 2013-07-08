@@ -5,12 +5,17 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
     mc:Ignorable="d"
-    d:DesignHeight="200" d:DesignWidth="600">
+    d:DesignHeight="200" d:DesignWidth="600" VerticalAlignment="Stretch"
+             Margin="0,0,0,150">
 
-    <StackPanel>
-        <TextBlock Text="Bienvenido" Foreground="{StaticResource LightBlueColorBrush}" FontWeight="Bold" FontSize="34"
+    <StackPanel VerticalAlignment="Center">
+        <Image Source="/AlmacenSL.Infrastructure;component/Assets/Images/ToolsLogo.png"
+               HorizontalAlignment="Center" Grid.Column="1" Width="100" Height="100"/>
+        <TextBlock Text="Control de Almacen" Foreground="{StaticResource LightBlueColorBrush}" FontSize="18"
                    HorizontalAlignment="Center" Grid.Column="1"/>
-        <Grid Background="{StaticResource BlueBackgroundColorBrush}">
+        <TextBlock Text="Versión Beta 2013" Foreground="DarkGray" FontSize="14" FontStyle="Italic"
+                   HorizontalAlignment="Center" Grid.Column="1"/>
+        <Grid Background="{StaticResource BlueBackgroundColorBrush}" Margin="0,50,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
@@ -42,7 +47,7 @@
                 <PasswordBox Password="{Binding StrPassword, Mode=TwoWay}" FontSize="15" Width="200" Grid.Row="1" Grid.Column="2" Margin="5" VerticalAlignment="Top"/>
                 
                 <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Right">
-                    <telerik:RadButton Content="Aceptar" Command="{Binding LoadModuleCommand}" 
+                    <telerik:RadButton Content="Aceptar" Command="{Binding LoginUserCommand}" 
                                        Foreground="{StaticResource LightBlueColorBrush}"  telerik:StyleManager.Theme="{StaticResource Theme}" 
                                   Width="60" Margin="5,5,5,20"/>
 

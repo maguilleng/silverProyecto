@@ -26,9 +26,7 @@ namespace AlmacenSL.Modules.Inventario
         {
             try
             {
-                //regionManager.RegisterViewWithRegion("MainContentRegion", typeof(ITicketMain));
-                //regionManager.RequestNavigate("MainContentRegion", typeof(ITicketMain));
-                RegionManager.RegisterViewWithRegion("MainContentRegion", typeof(InventarioMainUserControl));
+                //RegionManager.RequestNavigate("MainContentRegion", "InventarioMainUserControl");
             }
             catch (Exception ex)
             {
