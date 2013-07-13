@@ -9,7 +9,8 @@
     xmlns:infrastructure="clr-namespace:AlmacenSL.Infrastructure;assembly=AlmacenSL.Infrastructure"
     FontFamily="/AlmacenSL.Infrastructure;component/Assets/Fonts/TCM.TTF#Tw Cen MT"
     mc:Ignorable="d"
-    d:DesignHeight="300" d:DesignWidth="400">
+    d:DesignHeight="300" d:DesignWidth="400"
+             Loaded="UserControl_Loaded">
     
     <UserControl.Resources>
         <infrastructure:CurrentUserToVisibilityConverter x:Key="userToVisibilityConverter"/>

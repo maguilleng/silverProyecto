@@ -18,7 +18,7 @@
                 <TextBlock Text="{Binding Path=CurrentUser.Name}" FontSize="13" 
                            Margin="5" HorizontalAlignment="Right"/>
                 <HyperlinkButton Content="Cerrar Sesión" Visibility="{Binding CurrentUser, Converter={StaticResource userToVisibilityConverter}}" 
-                                 Foreground="DarkGray" FontSize="11" FontStyle="Italic" Command="{Binding CloseSessionCommand}"/>
+                                 Foreground="DarkGray" FontSize="12" FontStyle="Italic" Command="{Binding CloseSessionCommand}"/>
             </StackPanel>
             <Image Width="40" Height="40" Source="{Binding CurrentUser, Converter={StaticResource boolToImageConverter}}" 
                    Margin="10,0,15,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>

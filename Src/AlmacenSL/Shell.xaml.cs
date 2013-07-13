@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.ComponentModel.Composition;
+using System.Windows.Browser;
 
 namespace AlmacenSL
 {
@@ -29,6 +30,11 @@ namespace AlmacenSL
         public Shell()
         {
             InitializeComponent();
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            HtmlPage.Plugin.Focus();           
         }
     }
 }

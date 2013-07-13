@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using AlmacenSL.Infrastructure;
+using AlmacenSL.ViewModels;
 
 namespace AlmacenSL.Views
 {
@@ -16,5 +17,10 @@ namespace AlmacenSL.Views
         {
             InitializeComponent();
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            txtUsuario.Focus();
+        }        
     }
 }

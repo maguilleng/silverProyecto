@@ -28,15 +28,8 @@ namespace AlmacenSL.ViewModels
         public IRegionManager RegionManager { get; set; }
 
         public ICommand LoginUserCommand { get; private set; }
-        public ICommand CloseSessionCommand { get; set; }
-
-        [ImportingConstructor]
-        public ShellViewModel(IEventAggregator eventAggregator)
-        {
-            this.LoginUserCommand = new DelegateCommand<object>(this.OnLoginUser);
-            this.CloseSessionCommand = new DelegateCommand<object>(this.OnCloseSession);
-            this.EnableLoginButton = true;
-        }
+        public ICommand CancelLoginCommand { get; set; }
+        public ICommand CloseSessionCommand { get; set; }        
 
         string strUser;
         [Required]
@@ -59,6 +52,17 @@ namespace AlmacenSL.ViewModels
             {
                 strPassword = value;
                 RaisePropertyChanged("StrPassword");
+            }
+        }
+
+        string strNotifications;
+        public string StrNotifications
+        {
+            get { return strNotifications; }
+            set 
+            { 
+                strNotifications = value;
+                RaisePropertyChanged("StrNotifications");
             }
         }
 
@@ -85,23 +89,54 @@ namespace AlmacenSL.ViewModels
         }
         #endregion
 
+
+        #region Funciones
         private void OnLoginUser(object obj)
-        {
+        {            
+            if(StrUser == null || StrUser == String.Empty)
+            {
+                StrNotifications = "Debe escribir su Usuario.";
+                return;
+            }
+
+            if(StrPassword == null || StrPassword == String.Empty)
+            {
+                StrNotifications = "Debe escribir su Contraseña.";
+                return;
+            }
+
             this.EnableLoginButton = false;
             LoginParameters lp = new LoginParameters(StrUser, StrPassword);
-            WebContext.Current.Authentication.Login(lp, LoginOperationCompleted, null);
+            try
+            {
+                WebContext.Current.Authentication.Login(lp, LoginOperationCompleted, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error de Autenticación: " + ex.Message);               
+            }
+            
         }
+
+        private void OnCancelLogin(object obj)
+        {
+            StrUser = String.Empty;
+            StrPassword = String.Empty;
+            StrNotifications = String.Empty;
+        }
+
         private void LoginOperationCompleted(LoginOperation lo)
         {
-            this.EnableLoginButton = true;
+            StrNotifications = String.Empty;
+            this.EnableLoginButton = true;            
             if (!lo.HasError)
-            {
+            {               
                 if (lo.LoginSuccess)
                 {
                     if (WebContext.Current.User.IsAuthenticated)
                     {
                         StrUser = String.Empty;
-                        StrPassword = String.Empty;
+                        StrPassword = String.Empty;                        
                         CurrentUser = WebContext.Current.User;
                         //MessageBox.Show(CurrentUser.Roles.First());
                     }
@@ -119,7 +154,7 @@ namespace AlmacenSL.ViewModels
             }
             else
             {
-                MessageBox.Show("Error de Autenticación.");
+                MessageBox.Show("Error de Autenticación. Consulte al Soporte técnico del Sistema.");
             }
         }
 
@@ -174,5 +209,15 @@ namespace AlmacenSL.ViewModels
                 //this.EventAggregator.GetEvent<ErrorEvent>().Publish(ex);
             }
         }
+
+        [ImportingConstructor]
+        public ShellViewModel(IEventAggregator eventAggregator)
+        {
+            this.LoginUserCommand = new DelegateCommand<object>(this.OnLoginUser);
+            this.CloseSessionCommand = new DelegateCommand<object>(this.OnCloseSession);
+            this.CancelLoginCommand = new DelegateCommand<object>(this.OnCancelLogin);
+            this.EnableLoginButton = true;
+        }
+        #endregion
     }
 }

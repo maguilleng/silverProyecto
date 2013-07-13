@@ -20,6 +20,15 @@
     </style>
     <script type="text/javascript" src="Silverlight.js"></script>
     <script type="text/javascript">
+        function setFocusOnSilverlight()
+        {
+            var silverlightObject = document.getElementById('silverlightControlHost');
+            if (silverlightObject)
+            {
+                silverlightObject.tabIndex = 0; silverlightObject.focus();
+            }
+        }
+
         function onSilverlightError(sender, args) {
             var appSource = "";
             if (sender != null && sender != 0) {
@@ -56,11 +65,12 @@
         }
     </script>
 </head>
-<body>
+<body onload="setFocusOnSilverlight()">
     <form id="form1" runat="server" style="height:100%">
     <div id="silverlightControlHost">
-        <object data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="100%" height="100%">
-		  <param name="source" value="ClientBin/AlmacenSL.xap"/>
+        <object name="silverlightPlugin" data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="100%" height="100%" tabindex="0">
+		    <param name="windowless" value="true" />
+            <param name="source" value="ClientBin/AlmacenSL.xap"/>
 		  <param name="onError" value="onSilverlightError" />
 		  <param name="background" value="white" />
 		  <param name="minRuntimeVersion" value="5.0.61118.0" />

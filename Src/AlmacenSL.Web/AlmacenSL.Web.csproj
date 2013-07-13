@@ -169,6 +169,7 @@
       <DependentUpon>AlmacenModel.edmx</DependentUpon>
       <LastGenOutput>AlmacenModel.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\AlmacenSL %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\AlmacenSL.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

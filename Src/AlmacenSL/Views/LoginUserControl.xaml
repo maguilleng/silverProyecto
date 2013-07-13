@@ -5,8 +5,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
     mc:Ignorable="d"
-    d:DesignHeight="200" d:DesignWidth="600" VerticalAlignment="Stretch"
-             Margin="0,0,0,150">
+    d:DesignHeight="500" d:DesignWidth="600" VerticalAlignment="Stretch"
+    Margin="0,0,0,150" 
+    Loaded="UserControl_Loaded">
 
     <StackPanel VerticalAlignment="Center">
         <Image Source="/AlmacenSL.Infrastructure;component/Assets/Images/ToolsLogo.png"
@@ -31,6 +32,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -43,14 +45,23 @@
                        Margin="5"/>
                 <TextBlock Text="Contraseña" FontSize="15" FontWeight="Bold" Foreground="{StaticResource LightBlueColorBrush}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top"
                        Margin="5"/>
-                <TextBox Text="{Binding StrUser, Mode=TwoWay}" FontSize="15" Width="200" Grid.Column="2"  Margin="5,20,5,5" VerticalAlignment="Bottom"/>
-                <PasswordBox Password="{Binding StrPassword, Mode=TwoWay}" FontSize="15" Width="200" Grid.Row="1" Grid.Column="2" Margin="5" VerticalAlignment="Top"/>
+                
+                <TextBox x:Name="txtUsuario" Text="{Binding StrUser, Mode=TwoWay}"
+                         FontSize="15" Width="200" Grid.Column="2"  Margin="5,20,5,5" VerticalAlignment="Bottom"/>              
+                <PasswordBox Password="{Binding StrPassword, Mode=TwoWay}" KeyUp="UserControl_KeyUp" 
+                             FontSize="15" Width="200" Grid.Row="1" Grid.Column="2" Margin="5" VerticalAlignment="Top"/>
                 
                 <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Right">
                     <telerik:RadButton Content="Aceptar" Command="{Binding LoginUserCommand}" IsEnabled="{Binding EnableLoginButton}"
                                        Foreground="{StaticResource LightBlueColorBrush}"  telerik:StyleManager.Theme="{StaticResource Theme}" 
                                   Width="60" Margin="5,5,5,20"/>
-
+                    <telerik:RadButton Content="Cancelar" Command="{Binding CancelLoginCommand}"
+                                       Foreground="{StaticResource LightBlueColorBrush}" telerik:StyleManager.Theme="{StaticResource Theme}" 
+                                       Width="60" Margin="5,5,5,20"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding StrNotifications}" Foreground="Red" FontStyle="Italic" FontSize="15" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Grid>
         </Grid>

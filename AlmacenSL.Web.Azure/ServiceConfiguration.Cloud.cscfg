@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ServiceConfiguration serviceName="AlmacenSL.Web.Azure" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="3" osVersion="*" schemaVersion="2013-03.2.0">
-  <Role name="AlmacenSL.Web">
-    <Instances count="1" />
-    <ConfigurationSettings>
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=almacenstorage;AccountKey=aiBYcxEjt1RkwOzpZYp8E9PwZPAmqMLANixp6NTYgt09AUGzFgjYnULxlcpWE91JImp2G92EG0NN3ozzu24E5A==" />
-    </ConfigurationSettings>
-  </Role>
-</ServiceConfiguration>
